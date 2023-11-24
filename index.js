@@ -46,6 +46,7 @@ async function run() {
             const query = {};
             const cursor = toysCollection.find(query)
             const toys = await cursor.limit(20).toArray()
+            console.log("all toys from home", toys);
             res.send(toys)
         })
 
@@ -79,8 +80,7 @@ async function run() {
             }
             const toys = await toysCollection.find(query).sort(sortOption).toArray();
             res.send(toys);
-            console.error('Error fetching toys:', error);
-            res.status(500).send('Internal Server Error');
+
         });
 
 
